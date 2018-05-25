@@ -1,5 +1,16 @@
-<h1>Cocktail details</h1>
 
+<div class="container">
+ <div class="row headlist" id="title">
+  <p><%= @cocktail.name %></p>
+ </div>
+
+  <div class="row image">
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  </div>
+  <div class="row" id="second_title">
+    <p>Ingrédients</p>
+  </div>
+  <div class="row ingred_list">
     <ul>
       <% @doses.each do |dose| %>
         <li>
@@ -11,8 +22,11 @@
         </li>
       <% end %>
     </ul>
-
-<%= link_to 'Add Dose', new_cocktail_dose_path(@cocktail.id) %>
-<div>
-  <%= link_to "Back to list", cocktails_path %>
+  </div>
+  <div class="row ingred_list">
+    <%= link_to '+ Add Dose', new_cocktail_dose_path(@cocktail.id) %>
+  </div>
+  <div class="row ingred_list">
+    <%= link_to "Back to list", cocktails_path %>
+  </div>
 </div>

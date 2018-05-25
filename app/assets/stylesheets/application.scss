@@ -11,8 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ body{
+  background-color: #283149 !important;
+ }
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "cocktails";
 @import "doses";
 @import "ingredients";
+@import "navbar";
+

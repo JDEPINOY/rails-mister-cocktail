@@ -1,27 +1,42 @@
-
-<h1>Cocktails</h1>
+<%= render 'components/navbar' %>
+<div class='headlist'>
+  <div id="title">
+    <p>Cocktails list</p>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
+    <div class="col" id="adding">
+        <%= link_to '+ Add Cocktail', new_cocktail_path %>
+    </div>
+    <div class="w-100"></div>
+
     <% @cocktails.each do |cocktail| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-          <div class="card-category">Popular</div>
-          <div class="card-description">
-          <h2><%= cocktail.name %></h2>
-            <!-- <p>Very cool city, the best</p> -->
-            <%= link_to cocktail.name, "cocktails/#{cocktail.id}" %>
+        <% if cocktail.photo.blank? == true %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://via.placeholder.com/350x150');">
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(cocktail.photo, :width=>296, :crop=>"thumb") %>');">
+        <% end %>
+            <div class="card-category">Popular</div>
+            <div class="card-description">
+              <h2><%= cocktail.name %></h2>
+            </div>
+        <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+        <!-- <a class="card-link" href="#" ></a> -->
+
+            <%= link_to "", cocktail_path(cocktail), class:"card-link" %>
           </div>
-          <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-          <!-- <a class="card-link" href="#" ></a> -->
         </div>
-      </div>
     <% end %>
+
+    </div>
   </div>
 </div>
 
 
-<ul>
+<!-- <ul>
   <% @cocktails.each do |cocktail| %>
    <li>
     <%= link_to cocktail.name, "cocktails/#{cocktail.id}" %>
@@ -30,13 +45,12 @@
         data: { confirm: "Are you sure?" }  do %>
         <span><i class="glyphicon glyphicon-trash"></i></span>
     <% end %>
+
    </li>
   <% end %>
-</ul>
+</ul> -->
 
-<div>
-  <%= link_to 'Add Cocktail', new_cocktail_path %>
-</div>
+
 
 
 
